@@ -3,6 +3,7 @@
   import mainY from './components/mainY.vue'
 
   export default {
+    
     components:{
       headerY,
       mainY,

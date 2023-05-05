@@ -1,21 +1,49 @@
-<script >
- export default {
+<script>
+
+import axios from 'axios';
+import cards from './cards.vue';
+import store from '../store';
+
+export default {
+
+    components:{
+        cards,
+    },
+
     data() {
-      return {
-      }
+        return {
+
+            cards: [],
+            store,
+        }
+    },
+    created(){
+        this.fetchCards()
+    },
+    methods:{
+        fetchCards(){
+            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=20')
+            .then ((res) => {
+                this.store.cards = res.data.data
+            })
+        }
     }
-    
-  }
+}
 </script>
 
 <template>
     <div class="frame">
         <select class="my-3" name="cardtype" id="select"></select>
         <div class="container">
-            <div class="totcard bg-dark text-uppercase text-white">found ... cards</div>
+            <div class="totcard bg-dark text-uppercase text-white">founds ... cards</div>
+            <div class="cards d-flex flex-wrap justify-content-between">
+                <cards v-for="element in store.cards" 
+                :key="index"
+                :card="element">
+                </cards>
+            </div>
         </div>
     </div>
-  
 </template>
 
 
@@ -24,11 +52,9 @@
 
 .frame{
     background-color: variables.$bg-main;
-    max-width: 1400px;
    
     .container{
         background-color: variables.$bg-dark;
-        height: 1000px;
         padding: 2rem;
 
         .totcard{
@@ -40,7 +66,7 @@
 
 #select{
     width: 100px;
-    margin-left: 8.3rem;
+    margin-left: 3.7rem;
     border: none;
     background-color: variables.$bg-dark;
 

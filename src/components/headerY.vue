@@ -4,12 +4,10 @@
       return {
       }
     }
-    
   }
 </script>
 
 <template>
-
     <header>
         <div class="d-flex align-items-center">
             <img class="ms-3" src="../../img/logo.png" alt="logo">
