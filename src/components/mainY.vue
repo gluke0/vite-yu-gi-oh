@@ -35,7 +35,7 @@ export default {
     <div class="frame">
         <select class="my-3" name="cardtype" id="select"></select>
         <div class="container">
-            <div class="totcard bg-dark text-uppercase text-white">founds ... cards</div>
+            <div class="totcard bg-dark text-uppercase text-white"> found {{ store.cards.length }} cards</div>
             <div class="cards d-flex flex-wrap justify-content-between">
                 <cards v-for="element in store.cards" 
                 :key="index"
@@ -59,7 +59,7 @@ export default {
 
         .totcard{
            width: 100%;
-           padding: 0.5rem;
+           padding: 0.5rem 1.5rem;
         }
     }
 }

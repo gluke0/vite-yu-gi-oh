@@ -25,6 +25,10 @@
         width: calc(100% / 5 - 0.5rem);
         margin-bottom: 0.5rem;
         border: 1px solid black;
+
+        &:hover{
+            transform: scale(1.5);
+        }
     }
 
     img{
