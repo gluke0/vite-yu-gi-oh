@@ -14,7 +14,7 @@
 
   <div>
     <headerY></headerY>
-
+    <mainY></mainY>
   </div>
   
 </template>

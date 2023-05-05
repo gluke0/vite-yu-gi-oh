@@ -12,7 +12,7 @@
 
     <header>
         <div class="d-flex align-items-center">
-            <img class="ms-3" src="../../public/img/logo.png" alt="logo">
+            <img class="ms-3" src="../../img/logo.png" alt="logo">
             <h1>
                 Yu-Gi-Oh Api
             </h1>
@@ -22,7 +22,7 @@
 </template>
 
 <style lang="scss" scoped>
-    @use '../style/partials/variables';
+@use '../style/partials/variables';
     
     header{
         background-color: variables.$bg-dark;
