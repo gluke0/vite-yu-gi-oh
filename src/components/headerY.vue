@@ -25,17 +25,21 @@
     header{
         background-color: variables.$bg-dark;
 
-        img{
-            width: 10%;
-        }
+        div{
+            margin-left: 2.3rem;
 
-        h1{
-            text-align: center;
-            font-size: 3rem;
-            color: white;
-            padding: 0.7rem;
-            margin: 0;
+            img{
+                width: 10%;
+            }
+
+            h1{
+                text-align: center;
+                font-size: 3rem;
+                color: white;
+                padding: 0.7rem;
+                margin: 0;
+            }
+        }
     }
-}
     
 </style>
