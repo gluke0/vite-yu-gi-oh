@@ -3,16 +3,17 @@
 import axios from 'axios';
 import cards from './cards.vue';
 import store from '../store';
+import searchCard from './searchCard.vue';
 
 export default {
 
     components:{
         cards,
+        searchCard,
     },
 
     data() {
         return {
-
             cards: [],
             store,
         }
@@ -22,10 +23,17 @@ export default {
     },
     methods:{
         fetchCards(){
-            axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=20')
-            .then ((res) => {
-                this.store.cards = res.data.data
+            if (store.search !== ''){
+                axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.search}`)
+                .then ((res) => {
+                    this.store.cards = res.data.data
+                })
+            } else {
+                axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=20')
+                .then ((res) => {
+                    this.store.cards = res.data.data
             })
+            }
         }
     }
 }
@@ -33,7 +41,7 @@ export default {
 
 <template>
     <div class="frame">
-        <select class="my-3" name="cardtype" id="select"></select>
+        <searchCard @nomeEmit="fetchCards()"></searchCard>
         <div class="container">
             <div class="totcard bg-dark text-uppercase text-white"> found {{ store.cards.length }} cards</div>
             <div class="cards d-flex flex-wrap justify-content-between">
@@ -61,17 +69,6 @@ export default {
            width: 100%;
            padding: 0.5rem 1.5rem;
         }
-    }
-}
-
-#select{
-    width: 100px;
-    margin-left: 3.7rem;
-    border: none;
-    background-color: variables.$bg-dark;
-
-    &:hover{
-        transform: scale(1.05);
     }
 }
 
